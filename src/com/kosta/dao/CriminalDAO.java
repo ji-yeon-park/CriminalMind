@@ -16,7 +16,7 @@ public interface CriminalDAO {
 	/**
 	 * 중분류범죄명 검색
 	 */
-	String callMidCrime(String str) throws SQLException;
+	List<CriminalDTO> CallMidCrime(String str) throws SQLException;
 	
 	/**
 	 * 범죄별 발생횟수 검색

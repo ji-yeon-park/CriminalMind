@@ -19,6 +19,15 @@ public class CriminalServiceImpl implements CriminalService {
 		return list;
 	}
 	
+	@Override
+	public List<CriminalDTO> CallMidCrime(String name) throws SQLException {
+		List<CriminalDTO> list = dao.CallMidCrime(name);
+		if(list == null || list.isEmpty()) {
+			throw new SQLException("검색된 레코드가 없습니다.");
+		}
+		return list;
+	}
+	 
 	
 	@Override
 	public int SearchOccur(int number) throws SQLException {
@@ -49,6 +58,13 @@ public class CriminalServiceImpl implements CriminalService {
 		int result = dao.managerDelete(id);
 		if(result == 0) throw new SQLException("삭제되지 않았습니다");
 		return result;
+	}
+
+
+	@Override
+	public int SearchOccur(String supercime) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

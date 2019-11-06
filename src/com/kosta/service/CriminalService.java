@@ -14,6 +14,10 @@ public interface CriminalService {
 	List<CriminalDTO> SelectAll() throws SQLException;
 	
 	/**
+	 * 중분류 범죄종류 검색 
+	 */
+	List<CriminalDTO> CallMidCrime(String name) throws SQLException;
+	/**
 	 * 범죄별 발생횟수 검색
 	 */
 	int SearchOccur(String supercime) throws SQLException;

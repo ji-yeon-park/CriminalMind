@@ -17,11 +17,6 @@ public class MenuView {
 	        	 System.out.print("[ 0.관리자모드 ");
 	        	 System.out.print("1.전체검색 ");
 	        	 System.out.print("2.세부검색 ");
-//	        	 System.out.println("2. 범죄별 처벌내용");
-//	        	 System.out.print("2.범죄별 검거기간 ");
-//	          	 System.out.print("3.범죄별 발생횟수 ");
-//	         	 System.out.print("4.comment 수정 ");
-//	         	 System.out.print("5.comment 삭제 ");
 	         	 System.out.print("3.종료 ]");
 
 	             System.out.println("\n**********************************");
@@ -37,15 +32,6 @@ public class MenuView {
 		               case 2:
 		            	   SearchMode();
 						break;
-//		               case 3:
-//		            	   SearchArrest();
-//		 				break;
-//		               case 4:
-//		            	   managerUpdate();
-//		 				break;
-//		               case 5:
-//		            	   managerDelete();
-//		    				break;
 		               case 3:
 		            	  System.out.println("종료합니다.");
 		    			 System.exit(0);	
@@ -103,7 +89,7 @@ public class MenuView {
 	    	switch(nums) {
 	    	case 1:
 	    		callSuperCrime();
-	    		callMidCrime(str);
+	    		CallMidCrime();
 	    		break;
 	    	case 2:
 	    		callSuperCrime();
@@ -116,9 +102,9 @@ public class MenuView {
 	    		System.out.println("다른 범죄도 확인하시겠습니까 yes or no");
 	    		String choice = sc.nextLine();
 	    		if(choice.equals("yes")) { 
-	    			System.out.println("원하는 번호를 입력해주세요");
-	    			int str = sc.nextLine();
-	    			callMidCrime(str);
+	    			System.out.println("원하는 문자를 입력해주세요");
+	    			String str = sc.nextLine();
+	    			CallMidCrime();
 	    		}else System.out.println("종료합니다.");
 	    			System.exit(0);	
 	    	}
@@ -141,19 +127,11 @@ public class MenuView {
 		/**
 		 * 세부범죄 확인 
 		 */
-		public static void callMidCrime(String str) {
+		public static void CallMidCrime() {
 			System.out.println("항목별 범죄명을 확인 할 수 있습니다.");
-			System.out.println("원하는 번호를 입력해주세요.");
-			try {
-				String name = sc.nextLine();
-				
-			}catch(Exception e) {
-				System.out.println("다시 입력해주세요");
-				
-			}finally {
-				
-			}
-
+			System.out.println("원하는 문자를 입력해주세요.");
+			String name = sc.nextLine();
+			CriminalController.CallMidCrime(name);
 		}
 		 
 		/**
