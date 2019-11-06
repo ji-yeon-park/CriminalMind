@@ -43,7 +43,7 @@ public class DBSetup {
         	JsonObject weather = (JsonObject) parse_item.get(0);
         	
         	
-        	Connection con = DbUtil.getConnection();  
+        	Connection con = DbUtil.getConnection(); 
         	
 //        	String[] strArray = {"합계","강력범,","절도범","폭력범","지능범","풍속범","기타형사범","특별법범"};
 //        	List<a> list = new ArrayList<a>();
@@ -52,6 +52,8 @@ public class DBSetup {
         		
         		String temp1 = weather.get("BALSAENG_"+i).toString();
         		String temp2 = weather.get("GEOMGEO_"+i).toString();
+        		
+        		
 
         		String sql = "insert into IDNAME values (?,?,?)";
             	PreparedStatement ps = con.prepareStatement(sql);
