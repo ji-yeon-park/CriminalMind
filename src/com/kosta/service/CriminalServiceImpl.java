@@ -25,6 +25,7 @@ public class CriminalServiceImpl implements CriminalService {
 	
 	@Override
 	public List<CriminalDTO> CallMidCrime(String name) throws SQLException {
+		
 		List<CriminalDTO> list = dao.CallMidCrime(name);
 		if(list == null || list.isEmpty()) {
 			throw new SQLException("검색된 레코드가 없습니다.");
