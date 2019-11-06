@@ -3,11 +3,14 @@ package com.kosta.view;
 import java.util.Scanner;
 
 import com.kosta.controller.CriminalController;
+import com.kosta.controller.CriminalControllerImpl;
 import com.kosta.dto.CriminalDTO;
+import com.kosta.service.CriminalServiceImpl;
 
 public class MenuView {
+
+	
 	   static Scanner sc =new Scanner(System.in);
-	   static int password = 1234;
 	   /**
 	    * 메뉴
 	    * */
@@ -68,27 +71,36 @@ public class MenuView {
 	    public static void managerMode() {
 	    	System.out.println("비밀번호를 입력해주세요.");
 	    	try{
-	    		int no = Integer.parseInt(sc.nextLine());		
-	    	if(no == password) {
-	    		System.out.print("1.comment 수정 ");
-	         	System.out.print("2.comment 삭제 ");
-	           int num = Integer.parseInt(sc.nextLine());	
-	           	switch(num) {
-	           	case 1:
-	           		managerUpdate();
-	           		break;
-	            case 2:
-	            	managerDelete();
-	    		    break;
-	            default:
-	            	System.out.println("비밀번호를 다시 입력해주세요."); 
-	            	
+	    		String password = sc.nextLine();	
+	
+	    		for(int i =0 ; i < 3; i++) {
+	    		
+		    	if(CriminalController.PWCheck(password)) {
+		    		System.out.print("1.comment 수정 ");
+		         	System.out.print("2.comment 삭제 ");
+		           int num = Integer.parseInt(sc.nextLine());	
+		           	switch(num) {
+		           	case 1:
+		           		managerUpdate();
+		           		i = 3;
+		           		break;
+		            case 2:
+		            	i = 3;
+		            	managerDelete();
+		    		    break;
+		    		 
 	           	}
-	    	}
+	    	} 	
+	    		}
+	    		System.out.println("비밀번호 3번 ");
+		    	System.exit(0);
+	    		
+		    	
 	    	}catch (NumberFormatException e) {
 	    		System.out.println("처음으로 돌아갑니다.");
 	    	}
 	    }
+	    
 	    /**
 	     * 2. 세부검색
 	     */

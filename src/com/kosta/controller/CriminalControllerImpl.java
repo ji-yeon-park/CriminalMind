@@ -50,4 +50,18 @@ public class CriminalControllerImpl implements CriminalController {
     	// TODO Auto-generated method stub
     	
         }
+    
+	
+	private static boolean PWCheck(String password) {
+		boolean result=false;
+		
+		try {
+			result = criminalservice.PWCheck(password);
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		
+		return result;
+	}
+    
 }

@@ -60,4 +60,16 @@ public interface CriminalController {
 		}
 		
 	}
+	
+	static boolean PWCheck(String password) {
+		boolean result=false;
+		
+		try {
+			result = criminalservice.PWCheck(password);
+		}catch(Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		
+		return result;
+	}
 }

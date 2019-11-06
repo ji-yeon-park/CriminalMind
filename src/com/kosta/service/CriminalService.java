@@ -37,4 +37,9 @@ public interface CriminalService {
 	 */
 	int managerDelete(String id) throws SQLException;
 	
+	/**
+	 * 비밀번호 검증
+	 * 비밀번호를 property파일과 비교하고 3회이상 틀릴시 프로그램을 종료
+	 */
+	boolean PWCheck (String password) throws Exception;
 }
