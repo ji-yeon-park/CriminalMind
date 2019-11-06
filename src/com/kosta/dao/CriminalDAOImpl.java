@@ -45,12 +45,15 @@ public class CriminalDAOImpl implements CriminalDAO {
 		PreparedStatement ps= null;
 		ResultSet rs=null;
 		List<CriminalDTO> list = new ArrayList<CriminalDTO>();
-		String sql="select MIDCRIME from IDNAME where id like '?-%'";
+		String sql="select MIDCRIME from IDNAME where upper(ID) like upper(?)";
 		try {
 			con = DbUtil.getConnection();
 		    ps=con.prepareStatement(sql);
-		    ps.setString(1, str + "-%");
+		    ps.setString(1, "'" + str + "-%s'");
 			rs=ps.executeQuery();
+			while(rs.next()) {
+				list.add(e)
+			}
 			
 		}finally {
 			DbUtil.dbClose(con, ps, rs);
@@ -58,9 +61,6 @@ public class CriminalDAOImpl implements CriminalDAO {
 		return list;
 	}
 
-
-
-	
 	@Override
 	public int SearchOccur(int number) throws SQLException {
 		Connection con=null;

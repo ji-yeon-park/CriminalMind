@@ -17,7 +17,8 @@ public class PwUtil {
 	}
 	
 	public boolean PWCheck(String password) {
-		if (Encryption(password).equals(proFile.getProperty("password"))) {
+
+		if (Encryption(password).toUpperCase().equals(proFile.getProperty("password"))) {
 			return true;
 		}
 		return false;
@@ -44,7 +45,7 @@ public class PwUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(hexString);
+//		System.out.println(hexString);
 		
 		return hexString.toString();
 	}

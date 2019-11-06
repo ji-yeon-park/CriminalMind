@@ -3,7 +3,6 @@ package com.kosta.view;
 import java.util.Scanner;
 
 import com.kosta.controller.CriminalController;
-import com.kosta.controller.CriminalControllerImpl;
 import com.kosta.dto.CriminalDTO;
 import com.kosta.service.CriminalServiceImpl;
 
@@ -16,6 +15,7 @@ public class MenuView {
 	    * */
 	    public static void menuChoice() {
 	         while(true) {
+	        	 
 	        	 System.out.println("\n**********************************");
 	        	 System.out.print("[ 0.관리자모드 ");
 	        	 System.out.print("1.전체검색 ");
@@ -57,9 +57,11 @@ public class MenuView {
 	    public static void managerMode() {
 	    	System.out.println("비밀번호를 입력해주세요.");
 	    	try{
-	    		String password = sc.nextLine();	
+	    			
 	
 	    		for(int i =0 ; i < 3; i++) {
+	    			
+	    			String password = sc.nextLine();
 	    		
 		    	if(CriminalController.PWCheck(password)) {
 		    		System.out.print("1.comment 수정 ");
@@ -73,12 +75,15 @@ public class MenuView {
 		            case 2:
 		            	i = 3;
 		            	managerDelete();
-		    		    break;
-		    		 
+
 	           	}
+		           	
+		          
 	    	} 	
+		    	
+		    	 System.out.println("잘못된 패스워드 입니다 (" + (i+1) + "/3)");
 	    		}
-	    		System.out.println("비밀번호 3번 ");
+	    		System.out.println("비밀번호 3번 실패해서 종료합니다. ");
 		    	System.exit(0);
 	    		
 		    	
