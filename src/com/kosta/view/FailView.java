@@ -6,4 +6,7 @@ public class FailView {
 		System.out.println(message);
 		
 		}
+	public static void failmessage(String message) {
+		System.out.println(message);
+	}
 }

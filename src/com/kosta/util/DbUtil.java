@@ -28,23 +28,22 @@ public class DbUtil {
 	 * 프로젝트 시작시 실행됨
 	 */
 	
-//	static {
-//		try {
-//		Class.forName(DbProperty.DRIVER_NAME);
-//		System.out.println("호엥");
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-	public DbUtil() {
+	static {
 		try {
 		Class.forName(DbProperty.DRIVER_NAME);
-		
-		} catch (Exception e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
+
+//	public DbUtil() {
+//		try {
+//		Class.forName(DbProperty.DRIVER_NAME);
+//		
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	/**
 	 * 연결

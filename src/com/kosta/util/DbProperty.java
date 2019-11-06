@@ -10,9 +10,9 @@ public interface DbProperty {
 	public static final String DRIVER_NAME="oracle.jdbc.driver.OracleDriver";
 	//붙히지 않아도 자동이다
 	//공백 주면 안된다..
-	public static final String URL="jdbc:oracle:thin:@192.168.0.103:1521:xe";
+	public static final String URL="jdbc:oracle:thin:@localhost:1521:xe";
 	//대소문자 안가림, xe는 SID이름
-	public static final String USER="crime";
-	public static final String PASSWORDNAME="1234";
+	public static final String USER="test";
+	public static final String PASSWORDNAME="test";
 }
  

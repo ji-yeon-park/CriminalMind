@@ -7,7 +7,8 @@ import java.util.Properties;
 
 import com.kosta.dao.CriminalDAO;
 import com.kosta.dao.CriminalDAOImpl;
-import com.kosta.dto.CriminalDTO;
+import com.kosta.dto.ArrestDayDTO;
+import com.kosta.dto.CrimeInfoDTO;
 import com.kosta.util.DbUtil;
 import com.kosta.util.PwUtil;
 
@@ -15,8 +16,8 @@ public class CriminalServiceImpl implements CriminalService {
 	CriminalDAO dao = new CriminalDAOImpl();
 	
 	@Override
-	public List<CriminalDTO> SelectAll() throws SQLException {
-		List<CriminalDTO> list = dao.getSelectAll();
+	public List<CrimeInfoDTO> SelectAll() throws SQLException {
+		List<CrimeInfoDTO> list = dao.getSelectAll();
 		if(list == null || list.isEmpty()) {
 			throw new SQLException("검색된 레코드가 없습니다.");
 		}
@@ -24,52 +25,57 @@ public class CriminalServiceImpl implements CriminalService {
 	}
 	
 	@Override
-	public List<CriminalDTO> CallMidCrime(String name) throws SQLException {
-		
-		List<CriminalDTO> list = dao.CallMidCrime(name);
+	public List<ArrestDayDTO> SelectAll2() throws SQLException {
+		List<ArrestDayDTO> list = dao.getSelectAll2();
 		if(list == null || list.isEmpty()) {
 			throw new SQLException("검색된 레코드가 없습니다.");
+		}
+		return list;
+	}
+
+	@Override
+	public List<String> CallMidCrime(String name) throws SQLException {
+		
+		List<String> list = dao.CallMidCrime(name);
+		if(list == null || list.isEmpty()) {
+			throw new SQLException("잘못된 키워드 입력, 검색된 레코드가 없습니다.");
 		}
 		return list;
 	}
 	 
 	
 	@Override
-	public int SearchOccur(String supercime) throws SQLException {
-		int occur = dao.SearchOccur(supercime);
-		if(occur ==0)
-			throw new SQLException(supercime+"에 대한 정보가 없습니다.");
+	public CrimeInfoDTO SearchOccur(String str) throws SQLException {
+		CrimeInfoDTO occur = dao.SearchOccur(str);
+		if(occur == null)
+			throw new SQLException("잘못된 키워드 입력, 검색된 레코드가 없습니다.");
 		
 		return occur;
 	}
 	@Override
-	public int SearchArrest(String midcrime) throws SQLException {
-		int arrest = dao.SearchArrest(midcrime);
-		if(arrest ==0)
-			throw new SQLException(midcrime+"에 대한 정보가 없습니다.");
+	public ArrestDayDTO SearchArrest(String str) throws SQLException {
+		ArrestDayDTO arrest = dao.SearchArrest(str);
+		if(arrest == null)
+			throw new SQLException("잘못된 키워드 입력, 검색된 레코드가 없습니다.");
 		
 		return arrest;
 	}
+	
+	
+	/////////////////
+	
+	
 	@Override
-	public int managerUpdate(CriminalDTO criminalDTO) throws SQLException {
-		 int result = dao.managerUpdate(criminalDTO);
+	public int managerUpdate(String name,String comments) throws SQLException {
+		 int result = dao.managerUpdate(name,comments);
 		 if(result==0)throw new SQLException("수정되지 않았습니다.");
 		 return result;
 	}
-
-
 	@Override
-	public int managerDelete(String id) throws SQLException {
-		int result = dao.managerDelete(id);
-		if(result == 0) throw new SQLException("삭제되지 않았습니다");
-		return result;
-	}
-
-
-	@Override
-	public int SearchOccur(String supercime) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int managerUpdate2(String name,String comments) throws SQLException {
+		 int result = dao.managerUpdate2(name,comments);
+		 if(result==0)throw new SQLException("수정되지 않았습니다.");
+		 return result;
 	}
 
 	@Override
