@@ -1,22 +1,23 @@
-package com.kosta.service;
+package com.kosta.dao;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import com.kosta.dto.CriminalDTO;
 
-public interface CriminalService {
+public interface CriminalDAO {
 
 	/**
 	 * 전체레코드 검색
 	 * list로 리턴
 	 */
-	List<CriminalDTO> SelectAll() throws SQLException;
+	List<CriminalDTO> getSelectAll() throws SQLException;
+	
 	
 	/**
 	 * 범죄별 발생횟수 검색
 	 */
-	int SearchOccur(String supercime) throws SQLException;
+	int SearchOccur(String supercrime) throws SQLException;
 	
 	
 	/**
@@ -36,5 +37,6 @@ public interface CriminalService {
 	 * 범죄코드에 해당하는 코멘트 삭제 
 	 */
 	int managerDelete(int code) throws SQLException;
+	
 	
 }

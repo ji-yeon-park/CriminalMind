@@ -2,130 +2,167 @@ package com.kosta.view;
 
 import java.util.Scanner;
 
-import mvc.controller.BoardController;
-import mvc.model.dto.BoardDTO;
+import com.kosta.controller.CriminalController;
+import com.kosta.dto.CriminalDTO;
 
 public class MenuView {
 	   static Scanner sc =new Scanner(System.in);
-	 
+	   static int password = 1234;
 	   /**
 	    * 메뉴
 	    * */
 	    public static void menuChoice() {
 	         while(true) {
-	        	 System.out.println("\n----------------------------------------");
-	        	 System.out.print("[ 1. 전체검색 ");
-	        	 System.out.print("2. 글번호에 해당하는 검색 ");
-	          	System.out.print("3. 제목에 포함된 검색 ");
-	         	System.out.print("4. 등록 ");
-	         	System.out.print("5. 수정 ");
-	         	System.out.print("6. 삭제 ");
-	         	System.out.print("7. 종료 ]");
+	        	 System.out.println("\n****************************************************************************************");
+	        	 System.out.print("[ 0.관리자모드 ");
+	        	 System.out.print("1.전체검색 ");
+	        	 System.out.print("2.세부검색 ");
+	        	// System.out.println("2. 범죄별 처벌내용");
+	        	 System.out.print("2.범죄별 검거기간 ");
+	          	 System.out.print("3.범죄별 발생횟수 ");
+//	         	 System.out.print("4.comment 수정 ");
+//	         	 System.out.print("5.comment 삭제 ");
+	         	 System.out.print("6.종료 ]");
 
-	              System.out.println("\n--------------------------------------------");
-	              System.out.println("선택메뉴는?");
+	             System.out.println("\n****************************************************************************************");
+	             System.out.println("메뉴를 선택해주세요.");
 	              try {
 		              int menu = Integer.parseInt(sc.nextLine());
 		              switch (menu) {
-					  case 1:
-						  BoardController.boardSelectByAll();	
+		              case 0:
+		            	  managerMode();
+		              case 1:
+						   CriminalController.SelectAll();	
 						break;
 		               case 2:
-		            	   inputBoardByno(); //존재하는 게시물
+		            	   SearchMode();
+		            	   //SearchOccur();
 						break;
 		               case 3:
-		            	   inputBoardBySubject();
+		            	   SearchArrest();
 		 				break;
 		               case 4:
-		            	   inputInsertBoard();
+		            	   managerUpdate();
 		 				break;
 		               case 5:
-		    				inputUpdateBoard();
+		            	   managerDelete();
 		    				break;
 		               case 6:
-		            	   inputDeleteBoard();
-		    				break;
-		               case 7:
-		            	  System.out.println("다음에 다시 만나요~~^^ 로그아웃됩니다...");
+		            	  System.out.println("종료합니다.");
 		    			 System.exit(0);	
 		    			break;
 					default:
-						System.out.println("잘못되었습니다..다시 입력해주세요.");
+						System.out.println("다시 입력하세요");
 					}
 		        	 
 	              }catch (NumberFormatException e) {
-					System.out.println("메뉴는 숫자만 가능합니다.");
+					System.out.println("메뉴는 숫자로 입력해주세요.");
 				}
-	         }//while문
+	         }
 	    	
 	    }
+
 	    /**
-	     * 2. 글번호 검색...
+	     * 0. 매니저모드
+	     * 비밀번호로 입력 후 들어가서 update, delete 들어갈 수 있는 경로 
+	     */
+	    public static void managerMode() {
+	    	System.out.println("비밀번호를 입력해주세요.");
+	    	try{
+	    		int no = Integer.parseInt(sc.nextLine());		
+	    	if(no == password) {
+	    		System.out.print("4.comment 수정 ");
+	         	System.out.print("5.comment 삭제 ");
+	           int num = Integer.parseInt(sc.nextLine());	
+	           	switch(num) {
+	           	case 4:
+	           		managerUpdate();
+	           		break;
+	            case 5:
+	            	managerDelete();
+	    		    break;
+	            default:
+	            	System.out.println("비밀번호를 다시 입력해주세요."); 
+	            	
+	           	}
+	    	}
+	    	}catch (NumberFormatException e) {
+	    		System.out.println("처음으로 돌아갑니다.");
+	    	}
+	    }
+	    /**
+	     * 2. 세부검색
+	     */
+	    public static void SearchMode() {
+	    	System.out.println("1.강력범죄");
+	    	System.out.println("2.절도범죄");
+	    	System.out.println("3.폭력범죄");
+	    	System.out.println("4.지능범죄");
+	    	System.out.println("5.풍속범죄");
+	    	System.out.println("6.특별범죄");
+	    	System.out.println("7.기타범죄");
+	    	
+	    	System.out.println("원하는 번호를 입력해주세요");
+	    	try {
+	    	int no = Integer.parseInt(sc.nextLine());
+	    	System.out.println("1.범죄 별 세부범죄 검색");
+	    	System.out.println("2.범죄별 검거기간 검색");
+	    
+         	System.out.println("번호를 입력해주세요.");
+         	try {
+         	int num = Integer.parseInt(sc.nextLine());
+         	switch(num) {
+         		
+         	 }	
+         	}catch(NumberFormatException e) {
+         		
+         		
+         	}
+	    }catch(NumberFormatException e){
+	    	
+	    }
+	    }
+	    
+		/**
+	     * 2. 범죄별 발생횟수 검색
 	     * */
-	     public static void inputBoardByno() {
-	    	 try {
-		    	 System.out.println("글번호는 ???");
-		    	 String no = sc.nextLine();
-		    	 
-		    	 BoardController.boardSelectByNo(Integer.parseInt(no));
-	    	  }catch (NumberFormatException e) {
-				System.out.println("글번호는 숫자만 입력해주세요.");
-				System.out.println("다시 할래요?  yes or no");
-				String choice = sc.nextLine();
-				if(choice.equals("yes")) {
-					inputBoardByno();
-				}
-			 }//catch블럭End
-	     }//메소드 end
+	     public static void SearchOccur(){
+	    	 System.out.println("검색 할 범죄명을 입력해주세요");
+	    	 String supercrime = sc.nextLine();
+	    	 CriminalController.SearchOccur(supercrime);
+	     }
 	     
 	     /**
-	      *  검색필드..검색
-	      * */
-	     public static void inputBoardBySubject() {
-	    	 System.out.println("찾을 문자열은 ???");
-	    	 String word = sc.nextLine();
-	    	 BoardController.boardSelectBySubject(word);
-	     }
-	    
-	    
-	    /**
-	     *  등록
-	     * */
-	     public static void inputInsertBoard() {
-	    	 System.out.println("제목은?");
-	    	 String subject = sc.nextLine();
-	    	 
-	    	 System.out.println("작성자?");
-	    	 String writer = sc.nextLine();
-	    	 
-	    	 System.out.println("내용은?");
-	    	 String content = sc.nextLine();
-	    	 
-	    	 BoardDTO board =  new BoardDTO(0, subject, writer, content, null);
-	    	 BoardController.boardInsert(board);
-	     }
+		     * 3. 범죄별 검거기간 검색
+		     * */
+		     public static void SearchArrest(){
+		    	 System.out.println("검색 할 범죄명을 입력해주세요");
+		    	 String midcrime = sc.nextLine();
+		    	 CriminalController.SearchOccur(midcrime);
+		     }
 	     
 	    /**
 	     * 수정
 	     * */
-	     public static void inputUpdateBoard() {
-	    	 System.out.println("수정 할 게시물 번호는?");
-	    	 int no = Integer.parseInt(sc.nextLine());
+	     public static void managerUpdate() {
+	    	 System.out.println("수정 할 범죄코드을 입력해주세요");
+	    	 int code = Integer.parseInt(sc.nextLine());
 	    	 
 	    	 System.out.println("수정 내용은?");
-	    	 String content = sc.nextLine();
+	    	 String comment = sc.nextLine();
 	    	
-	    	 BoardDTO board =  new BoardDTO(no, null, null, content, null);
+	    	 CriminalDTO dto =  new CriminalDTO(code, null, null, comment);
 	    	 
-	    	 BoardController.boardUpdate(board);
+	    	 CriminalController.managerUpdate(dto);
 	     }
 	    
 	    /**
 	     * 삭제
 	     * */
-	     public static void inputDeleteBoard() {
-	    	 System.out.println("삭제 게시물 번호는?");
-	    	 int no = Integer.parseInt(sc.nextLine());
-	    	 BoardController.boardDelete(no);
+	     public static void managerDelete() {
+	    	 System.out.println("삭제 할 범죄코드를 입력해주세요.");
+	    	 int code = Integer.parseInt(sc.nextLine());
+	    	 
+	    	 CriminalController.managerDelete(code);
 	     }
 	}

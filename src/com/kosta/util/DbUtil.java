@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class CriminalDbUtil {
+public class DbUtil {
 	private static Properties proFile = new Properties();
 	
 	public static Properties getProFile() {
