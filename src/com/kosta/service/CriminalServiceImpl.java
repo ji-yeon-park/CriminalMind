@@ -1,11 +1,15 @@
 package com.kosta.service;
 
+import java.awt.color.ProfileDataException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 import com.kosta.dao.CriminalDAO;
 import com.kosta.dao.CriminalDAOImpl;
 import com.kosta.dto.CriminalDTO;
+import com.kosta.util.DbUtil;
+import com.kosta.util.PwUtil;
 
 public class CriminalServiceImpl implements CriminalService {
 	CriminalDAO dao = new CriminalDAOImpl();
@@ -21,6 +25,7 @@ public class CriminalServiceImpl implements CriminalService {
 	
 	@Override
 	public List<CriminalDTO> CallMidCrime(String name) throws SQLException {
+		
 		List<CriminalDTO> list = dao.CallMidCrime(name);
 		if(list == null || list.isEmpty()) {
 			throw new SQLException("검색된 레코드가 없습니다.");
@@ -30,10 +35,10 @@ public class CriminalServiceImpl implements CriminalService {
 	 
 	
 	@Override
-	public int SearchOccur(int number) throws SQLException {
-		int occur = dao.SearchOccur(number);
+	public int SearchOccur(String supercime) throws SQLException {
+		int occur = dao.SearchOccur(supercime);
 		if(occur ==0)
-			throw new SQLException(number+"에 대한 정보가 없습니다.");
+			throw new SQLException(supercime+"에 대한 정보가 없습니다.");
 		
 		return occur;
 	}
@@ -67,6 +72,10 @@ public class CriminalServiceImpl implements CriminalService {
 		return 0;
 	}
 
-	
+	@Override
+	public boolean PWCheck(String password) throws Exception {
+		return new PwUtil().PWCheck(password);
+	}
+
 	
 }

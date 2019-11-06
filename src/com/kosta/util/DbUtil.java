@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class DbUtil {
 
 	
-	private static Properties proFile = new Properties();
+	
 	/*
 	 * 로드
 	 * 프로젝트 시작시 실행됨
@@ -40,7 +40,7 @@ public class DbUtil {
 	public DbUtil() {
 		try {
 		Class.forName(DbProperty.DRIVER_NAME);
-		proFile.load(new FileInputStream("src/com/kosta/property/En_password.properties"));
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

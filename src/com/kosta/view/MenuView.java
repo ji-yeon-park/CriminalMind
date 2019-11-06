@@ -6,13 +6,17 @@ import com.kosta.controller.CriminalController;
 import com.kosta.dto.CriminalDTO;
 
 public class MenuView {
-	   static Scanner sc =new Scanner(System.in);
-	   static int password = 1234;
+
+	
+	   static Scanner sc = new Scanner(System.in);
 	   /**
 	    * 메뉴
 	    * */
 	    public static void menuChoice() {
+	    	System.out.println("비밀번호를 입력해주세요.");
+
 	         while(true) {
+	        	 
 	        	 System.out.println("\n**********************************");
 	        	 System.out.print("[ 0.관리자모드 ");
 	        	 System.out.print("1.전체검색 ");
@@ -54,27 +58,41 @@ public class MenuView {
 	    public static void managerMode() {
 	    	System.out.println("비밀번호를 입력해주세요.");
 	    	try{
-	    		int no = Integer.parseInt(sc.nextLine());		
-	    	if(no == password) {
-	    		System.out.print("1.comment 수정 ");
-	         	System.out.print("2.comment 삭제 ");
-	           int num = Integer.parseInt(sc.nextLine());	
-	           	switch(num) {
-	           	case 1:
-	           		managerUpdate();
-	           		break;
-	            case 2:
-	            	managerDelete();
-	    		    break;
-	            default:
-	            	System.out.println("비밀번호를 다시 입력해주세요."); 
-	            	
+	    			
+	
+	    		for(int i =0 ; i < 3; i++) {
+	    			
+	    			String password = sc.nextLine();
+	    		
+		    	if(CriminalController.PWCheck(password)) {
+		    		System.out.print("1.comment 수정 ");
+		         	System.out.print("2.comment 삭제 ");
+		           int num = Integer.parseInt(sc.nextLine());	
+		           	switch(num) {
+		           	case 1:
+		           		managerUpdate();
+		           		i = 3;
+		           		break;
+		            case 2:
+		            	i = 3;
+		            	managerDelete();
+
 	           	}
-	    	}
+		           	
+		          
+	    	} 	
+		    	
+		    	 System.out.println("잘못된 패스워드 입니다 (" + (i+1) + "/3)");
+	    		}
+	    		System.out.println("비밀번호 3번 실패해서 종료합니다. ");
+		    	System.exit(0);
+	    		
+		    	
 	    	}catch (NumberFormatException e) {
 	    		System.out.println("처음으로 돌아갑니다.");
 	    	}
 	    }
+	    
 	    /**
 	     * 2. 세부검색
 	     */
@@ -128,9 +146,14 @@ public class MenuView {
 		 * 세부범죄 확인 
 		 */
 		public static void CallMidCrime() {
+			System.out.println("안녕?");
 			System.out.println("항목별 범죄명을 확인 할 수 있습니다.");
 			System.out.println("원하는 문자를 입력해주세요.");
-			String name = sc.nextLine();
+			
+//			String name = sc.nextLine();
+//			String name = sc.nextLine();
+			
+			
 			CriminalController.CallMidCrime(name);
 		}
 		 
@@ -149,7 +172,7 @@ public class MenuView {
 		     public static void SearchArrest(){
 		    	 System.out.println("검색 할 범죄명을 입력해주세요");
 		    	 String midcrime = sc.nextLine();
-		    	 CriminalController.SearchOccur(midcrime);
+		    	 CriminalController.SearchArrest(midcrime);
 		     }
 	     
 	    /**
