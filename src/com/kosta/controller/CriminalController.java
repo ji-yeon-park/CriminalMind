@@ -22,9 +22,9 @@ public interface CriminalController {
 			}
 	}
 			 
-	static void SearchOccur(String supercrime) {
+	static void SearchOccur(int number) {
 		try {
-    		int occur =criminalservice.SearchOccur(supercrime);
+    		int occur =criminalservice.SearchOccur(number);
     		SuccessView.OccurPrint(occur);
     		
     	}catch (SQLException e) {
@@ -51,9 +51,9 @@ public interface CriminalController {
 		}
 		
 	}
-	static void managerDelete(int code) {
+	static void managerDelete(String id) {
 		try {
-			criminalservice.managerDelete(code);
+			criminalservice.managerDelete(id);
 			SuccessView.printMessage("삭제되었습니다.");
 		}catch(Exception e) {
 			FailView.errorMessage(e.getMessage());

@@ -21,10 +21,10 @@ public class CriminalServiceImpl implements CriminalService {
 	
 	
 	@Override
-	public int SearchOccur(String supercrime) throws SQLException {
-		int occur = dao.SearchOccur(supercrime);
+	public int SearchOccur(int number) throws SQLException {
+		int occur = dao.SearchOccur(number);
 		if(occur ==0)
-			throw new SQLException(supercrime+"에 대한 정보가 없습니다.");
+			throw new SQLException(number+"에 대한 정보가 없습니다.");
 		
 		return occur;
 	}
@@ -45,8 +45,8 @@ public class CriminalServiceImpl implements CriminalService {
 
 
 	@Override
-	public int managerDelete(int code) throws SQLException {
-		int result = dao.managerDelete(code);
+	public int managerDelete(String id) throws SQLException {
+		int result = dao.managerDelete(id);
 		if(result == 0) throw new SQLException("삭제되지 않았습니다");
 		return result;
 	}

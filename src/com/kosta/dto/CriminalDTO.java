@@ -2,7 +2,7 @@ package com.kosta.dto;
 
 public class CriminalDTO {
 
-	private int crimecode; // 범죄코드
+	private String id; // 범죄코드
 	private String supercrime; // 대분류
 	private String midcrime; // 중분류
 	private int occur; // 발생횟수 
@@ -10,21 +10,21 @@ public class CriminalDTO {
 	private String comment; // 처벌내용(코멘트)
 
 	public CriminalDTO() {}
-	public CriminalDTO(int crimecode, String supercrime, String midcrime) { // 코드 서치할때 나오는 결과 
+	public CriminalDTO(String id, String supercrime, String midcrime) { // 코드 서치할때 나오는 결과 
 		super();
-		this.crimecode = crimecode;
+		this.id = id;
 		this.supercrime = supercrime;
 		this.midcrime = midcrime;
 	}
 
 
-	public CriminalDTO(int crimecode, String supercrime, String midcrime, String comment) { // 업데이트, 삭제때 나오는 결과 
-		this(crimecode, supercrime, midcrime);
+	public CriminalDTO(String id, String supercrime, String midcrime, String comment) { // 업데이트, 삭제때 나오는 결과 
+		this(id, supercrime, midcrime);
 		this.comment = comment;
 	}
 	
-	public CriminalDTO(int crimecode, String supercrime, String midcrime, int occur, int arrest) { // 전체검색 결과
-		this(crimecode, supercrime, midcrime);
+	public CriminalDTO(String id, String supercrime, String midcrime, int occur, int arrest) { // 전체검색 결과
+		this(id, supercrime, midcrime);
 		this.occur = occur;
 		this.arrest = arrest;
 	}
@@ -32,11 +32,11 @@ public class CriminalDTO {
 	/*
 	 * getter 와 setter
 	 */
-	public int getCrimecode() {
-		return crimecode;
+	public String getId() {
+		return id;
 	}
-	public void setCrimecode(int crimecode) {
-		this.crimecode = crimecode;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getSupercrime() {
 		return supercrime;
@@ -72,7 +72,7 @@ public class CriminalDTO {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("CriminalDTO [crimecode=");
-		builder.append(crimecode);
+		builder.append(id);
 		builder.append(", supercrime=");
 		builder.append(supercrime);
 		builder.append(", midcrime=");

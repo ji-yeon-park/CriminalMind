@@ -13,11 +13,15 @@ public interface CriminalDAO {
 	 */
 	List<CriminalDTO> getSelectAll() throws SQLException;
 	
+	/**
+	 * 중분류범죄명 검색
+	 */
+	String callMidCrime(String str) throws SQLException;
 	
 	/**
 	 * 범죄별 발생횟수 검색
 	 */
-	int SearchOccur(String supercrime) throws SQLException;
+	int SearchOccur(int number) throws SQLException;
 	
 	
 	/**
@@ -36,7 +40,7 @@ public interface CriminalDAO {
 	 * 삭제하기 
 	 * 범죄코드에 해당하는 코멘트 삭제 
 	 */
-	int managerDelete(int code) throws SQLException;
+	int managerDelete(String id) throws SQLException;
 	
 	
 }

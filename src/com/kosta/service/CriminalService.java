@@ -35,6 +35,6 @@ public interface CriminalService {
 	 * 삭제하기 
 	 * 범죄코드에 해당하는 코멘트 삭제 
 	 */
-	int managerDelete(int code) throws SQLException;
+	int managerDelete(String id) throws SQLException;
 	
 }

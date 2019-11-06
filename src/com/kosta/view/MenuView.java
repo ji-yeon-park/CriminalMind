@@ -36,7 +36,6 @@ public class MenuView {
 						break;
 		               case 2:
 		            	   SearchMode();
-		            	   //SearchOccur();
 						break;
 //		               case 3:
 //		            	   SearchArrest();
@@ -71,14 +70,14 @@ public class MenuView {
 	    	try{
 	    		int no = Integer.parseInt(sc.nextLine());		
 	    	if(no == password) {
-	    		System.out.print("4.comment 수정 ");
-	         	System.out.print("5.comment 삭제 ");
+	    		System.out.print("1.comment 수정 ");
+	         	System.out.print("2.comment 삭제 ");
 	           int num = Integer.parseInt(sc.nextLine());	
 	           	switch(num) {
-	           	case 4:
+	           	case 1:
 	           		managerUpdate();
 	           		break;
-	            case 5:
+	            case 2:
 	            	managerDelete();
 	    		    break;
 	            default:
@@ -93,27 +92,23 @@ public class MenuView {
 	    /**
 	     * 2. 세부검색
 	     */
-	    public static void SearchMode() {
-	    	System.out.println("1.강력범죄");
-	    	System.out.println("2.절도범죄");
-	    	System.out.println("3.폭력범죄");
-	    	System.out.println("4.지능범죄");
-	    	System.out.println("5.풍속범죄");
-	    	System.out.println("6.특별범죄");
-	    	System.out.println("7.기타범죄");
-	    	System.out.println("");
+	    public static void SearchMode() { 
 	    	
-	    	 
-	    	System.out.println("원하는 번호를 입력해주세요");
+	    	System.out.println("아래번호 중 입력해주세요");
 	    	System.out.println("1번을 누르면 범죄별 세부범죄를 확인할 수 있습니다.");
 	    	System.out.println("2번을 누르면 범죄별 검거기간을 확인할 수 있습니다.");
+	    	
 	    	try {
 	    	int nums = Integer.parseInt(sc.nextLine());
 	    	switch(nums) {
 	    	case 1:
-	    		callMidCrime(nums);
+	    		callSuperCrime();
+	    		callMidCrime(str);
+	    		break;
 	    	case 2:
+	    		callSuperCrime();
 	    		SearchArrest();
+	    		break;
 	    	}
 	    	}catch( NumberFormatException e) {
 	    		System.out.println("1번과 2번 중 번호를 입력해주세요.");
@@ -122,79 +117,52 @@ public class MenuView {
 	    		String choice = sc.nextLine();
 	    		if(choice.equals("yes")) { 
 	    			System.out.println("원하는 번호를 입력해주세요");
-	    			int nums = Integer.parseInt(sc.nextLine());
-	    			callMidCrime(nums);
+	    			int str = sc.nextLine();
+	    			callMidCrime(str);
 	    		}else System.out.println("종료합니다.");
 	    			System.exit(0);	
 	    	}
 	    }
-	    
+	   
+	    /**
+		 * 대분류 범죄명 보여주기
+		 */
+		
+		public static void callSuperCrime() {
+			System.out.println("A.강력범죄");
+	    	System.out.println("B.절도범죄");
+	    	System.out.println("C.폭력범죄");
+	    	System.out.println("D.지능범죄");
+	    	System.out.println("E.풍속범죄");
+	    	System.out.println("F.특별범죄");
+	    	System.out.println("G.기타범죄");
+		}
+		
 		/**
 		 * 세부범죄 확인 
 		 */
-		public static void callMidCrime(int nums) {
+		public static void callMidCrime(String str) {
 			System.out.println("항목별 범죄명을 확인 할 수 있습니다.");
 			System.out.println("원하는 번호를 입력해주세요.");
 			try {
-			int num = Integer.parseInt(sc.nextLine());	
-			 if(num ==1) {
-	        		System.out.println("1.살인기수");
-	    	    	System.out.println("2.살인미수등");
-	    	    	System.out.println("3.강도");
-	    	    	System.out.println("4.강간");
-	    	    	System.out.println("5.유사강간");
-	    	    	System.out.println("6.강제추행");
-	    	    	System.out.println("7.기타강간강제추행등");
-	    	    	System.out.println("8.방화");
-	         	}else if(num ==2) {
-	         		System.out.println("1.절도범죄");
-	    	    
-	         	}else if(num ==3) {
-	         		System.out.println("1.상해");
-	    	    	System.out.println("2.폭행");
-	    	    	System.out.println("3.체포감금");
-	    	    	System.out.println("4.협박");
-	    	    	System.out.println("5.약취유인");
-	    	    	System.out.println("6.폭력행위등");
-	    	    	System.out.println("7.공갈");
-	    	    	System.out.println("8.손괴");
-	         	}else if(num ==4) {
-	         		System.out.println("1.직무유기");
-	    	    	System.out.println("2.직권남용");
-	    	    	System.out.println("3.증수뢰");
-	    	    	System.out.println("4.통화");
-	    	    	System.out.println("5.문서인장");
-	    	    	System.out.println("6.유가증권인지");
-	    	    	System.out.println("7.사기");
-	    	    	System.out.println("8.횡령");
-	    	    	System.out.println("8.배임");
-	         	}else if(num ==5) {
-	         		System.out.println("1.성풍속범죄");
-	         		System.out.println("2.도박범죄");
-	         	}else if(num ==6) {
-	         		System.out.println("1.특별경제범죄");
-	    	    	System.out.println("2.마약범죄");
-	    	    	System.out.println("3.보건범죄");
-	    	    	System.out.println("4.환경범죄");
-	    	    	System.out.println("5.교통범죄");
-	    	    	System.out.println("6.노동범죄");
-	    	    	System.out.println("7.안보범죄");
-	    	    	System.out.println("8.선거범죄");
-	    	    	System.out.println("8.병역범죄");
-	         	}else if(num ==7) {
-	         		System.out.println("1.기타범죄");
-			}
-			}catch(NumberFormatException e) {
+				String name = sc.nextLine();
 				
+			}catch(Exception e) {
+				System.out.println("다시 입력해주세요");
+				
+			}finally {
+				
+			}
+
 		}
-		}
+		 
 		/**
 	     * 2. 범죄별 발생횟수 검색
 	     * */
 	     public static void SearchOccur(){
-	    	 System.out.println("검색 할 범죄명을 입력해주세요");
-	    	 String supercrime = sc.nextLine();
-	    	 CriminalController.SearchOccur(supercrime);
+	    	 System.out.println("검색할 범죄의 번호를 입력해주세요");
+	    	 int number = Integer.parseInt(sc.nextLine());
+	    	 CriminalController.SearchOccur(number);
 	     }
 	     
 	     /**
@@ -211,12 +179,12 @@ public class MenuView {
 	     * */
 	     public static void managerUpdate() {
 	    	 System.out.println("수정 할 범죄코드을 입력해주세요");
-	    	 int code = Integer.parseInt(sc.nextLine());
+	    	 String id = sc.nextLine();
 	    	 
 	    	 System.out.println("수정 내용은?");
 	    	 String comment = sc.nextLine();
 	    	
-	    	 CriminalDTO dto =  new CriminalDTO(code, null, null, comment);
+	    	 CriminalDTO dto =  new CriminalDTO(id, null, null, comment);
 	    	 
 	    	 CriminalController.managerUpdate(dto);
 	     }
@@ -226,8 +194,8 @@ public class MenuView {
 	     * */
 	     public static void managerDelete() {
 	    	 System.out.println("삭제 할 범죄코드를 입력해주세요.");
-	    	 int code = Integer.parseInt(sc.nextLine());
+	    	 String id = sc.nextLine();
 	    	 
-	    	 CriminalController.managerDelete(code);
+	    	 CriminalController.managerDelete(id);
 	     }
 	}

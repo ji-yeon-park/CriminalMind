@@ -18,14 +18,14 @@ public class CriminalDAOImpl implements CriminalDAO {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		List<CriminalDTO> list = new ArrayList<CriminalDTO>();
-		String sql="select crimecode, supercrime, midcrime, occur_no, arrest_no from seouloccurrence";
+		String sql="select ID, SUPERCRIME, MIDCRIME, OCCUR_NO, ARREST_NO from CRIMEINFO join IDNAME using(id)";
 		try {
 			con = DbUtil.getConnection();
 			ps =con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				CriminalDTO dto = 
-				new CriminalDTO(rs.getInt("crimecode"), 
+				new CriminalDTO(rs.getString("id"), 
 						rs.getString("supercrime"),
 						rs.getString("midcrime"),
 						rs.getInt("occur"),
@@ -38,10 +38,31 @@ public class CriminalDAOImpl implements CriminalDAO {
 		return list;
 		
 	}
+	
+	@Override
+	public String callMidCrime(String str) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps= null;
+		ResultSet rs=null;
+		int result=0;
+		String sql="select MIDCRIME from IDNAME where id like '?-%'";
+		try {
+			con = DbUtil.getConnection();
+		    ps=con.prepareStatement(sql);
+		    ps.setString(1, midcrime);
+			rs=ps.executeQuery();
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return result;
+	}
+
+}
 
 	
 	@Override
-	public int SearchOccur(String supercrime) throws SQLException {
+	public int SearchOccur(int number) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps= null;
 		ResultSet rs=null;
@@ -117,4 +138,5 @@ public class CriminalDAOImpl implements CriminalDAO {
 		return result;	
 	}
 
-}
+
+ 
