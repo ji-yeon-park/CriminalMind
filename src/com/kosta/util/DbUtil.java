@@ -3,6 +3,8 @@ package com.kosta.util;
 
 
 import java.sql.Statement;
+import java.util.Properties;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,6 +21,8 @@ import java.sql.SQLException;
 
 public class DbUtil {
 
+	
+	private static Properties proFile = new Properties();
 	/*
 	 * 로드
 	 * 프로젝트 시작시 실행됨
@@ -36,8 +40,8 @@ public class DbUtil {
 	public DbUtil() {
 		try {
 		Class.forName(DbProperty.DRIVER_NAME);
-		System.out.println("호엥");
-		} catch (ClassNotFoundException e) {
+		proFile.load(new FileInputStream("src/com/kosta/property/En_password.properties"));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
