@@ -24,6 +24,7 @@ public interface CriminalController {
 	
 	static void CallMidCrime(String name) {
 				try {
+					
 					List<CriminalDTO> list = criminalservice.CallMidCrime(name);
 					SuccessView.successlist(list);
 				}catch(SQLException e) {
@@ -31,9 +32,9 @@ public interface CriminalController {
 				}
 			}
 	
-	static void SearchOccur(int number) {
+	static void SearchOccur(String str) {
 		try {
-    		int occur =criminalservice.SearchOccur(number);
+    		int occur =criminalservice.SearchOccur(str);
     		SuccessView.OccurPrint(occur);
     		
     	}catch (SQLException e) {

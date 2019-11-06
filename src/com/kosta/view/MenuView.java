@@ -4,16 +4,17 @@ import java.util.Scanner;
 
 import com.kosta.controller.CriminalController;
 import com.kosta.dto.CriminalDTO;
-import com.kosta.service.CriminalServiceImpl;
 
 public class MenuView {
 
 	
-	   static Scanner sc =new Scanner(System.in);
+	   static Scanner sc = new Scanner(System.in);
 	   /**
 	    * 메뉴
 	    * */
 	    public static void menuChoice() {
+	    	System.out.println("비밀번호를 입력해주세요.");
+
 	         while(true) {
 	        	 
 	        	 System.out.println("\n**********************************");
@@ -145,9 +146,14 @@ public class MenuView {
 		 * 세부범죄 확인 
 		 */
 		public static void CallMidCrime() {
+			System.out.println("안녕?");
 			System.out.println("항목별 범죄명을 확인 할 수 있습니다.");
 			System.out.println("원하는 문자를 입력해주세요.");
-			String name = sc.nextLine();
+			
+//			String name = sc.nextLine();
+//			String name = sc.nextLine();
+			
+			
 			CriminalController.CallMidCrime(name);
 		}
 		 
@@ -166,7 +172,7 @@ public class MenuView {
 		     public static void SearchArrest(){
 		    	 System.out.println("검색 할 범죄명을 입력해주세요");
 		    	 String midcrime = sc.nextLine();
-		    	 CriminalController.SearchOccur(midcrime);
+		    	 CriminalController.SearchArrest(midcrime);
 		     }
 	     
 	    /**
