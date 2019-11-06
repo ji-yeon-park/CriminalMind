@@ -5,8 +5,8 @@ public class CriminalDTO {
 	private String id; // 범죄코드
 	private String supercrime; // 대분류
 	private String midcrime; // 중분류
-	private int occur; // 발생횟수 
-	private int arrest; // 검거기간 
+	private int occur_no; // 발생횟수 
+	private int arrest_no; // 검거기간 
 	private String comment; // 처벌내용(코멘트)
 
 	public CriminalDTO() {}
@@ -23,10 +23,10 @@ public class CriminalDTO {
 		this.comment = comment;
 	}
 	
-	public CriminalDTO(String id, String supercrime, String midcrime, int occur, int arrest) { // 전체검색 결과
+	public CriminalDTO(String id, String supercrime, String midcrime, int occur_no, int arrest_no) { // 전체검색 결과
 		this(id, supercrime, midcrime);
-		this.occur = occur;
-		this.arrest = arrest;
+		this.occur_no = occur_no;
+		this.arrest_no = arrest_no;
 	}
 	
 	/*
@@ -51,16 +51,16 @@ public class CriminalDTO {
 		this.midcrime = midcrime;
 	}
 	public int getOccur() {
-		return occur;
+		return occur_no;
 	}
-	public void setOccur(int occur) {
-		this.occur = occur;
+	public void setOccur(int occur_no) {
+		this.occur_no = occur_no;
 	}
 	public int getArrest() {
-		return arrest;
+		return arrest_no;
 	}
-	public void setArrest(int arrest) {
-		this.arrest = arrest;
+	public void setArrest(int arrest_no) {
+		this.arrest_no = arrest_no;
 	}
 	public String getComment() {
 		return comment;
@@ -77,14 +77,16 @@ public class CriminalDTO {
 		builder.append(supercrime);
 		builder.append(", midcrime=");
 		builder.append(midcrime);
-		builder.append(", occur=");
-		builder.append(occur);
-		builder.append(", arrest=");
-		builder.append(arrest);
+		builder.append(", occur_no=");
+		builder.append(occur_no);
+		builder.append(", arrest_no=");
+		builder.append(arrest_no);
 		builder.append(", comment=");
 		builder.append(comment);
 		builder.append("]");
+		builder.append("\n");
 		return builder.toString();
+		
 	}
 	
 	

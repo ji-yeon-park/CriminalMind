@@ -23,6 +23,15 @@ public class CriminalServiceImpl implements CriminalService {
 		return list;
 	}
 	
+	@Override
+	public List<CriminalDTO> CallMidCrime(String name) throws SQLException {
+		List<CriminalDTO> list = dao.CallMidCrime(name);
+		if(list == null || list.isEmpty()) {
+			throw new SQLException("검색된 레코드가 없습니다.");
+		}
+		return list;
+	}
+	 
 	
 	@Override
 	public int SearchOccur(String supercime) throws SQLException {
@@ -62,12 +71,10 @@ public class CriminalServiceImpl implements CriminalService {
 		return 0;
 	}
 
-
 	@Override
 	public boolean PWCheck(String password) throws Exception {
 		return new PwUtil().PWCheck(password);
 	}
 
-	
 	
 }

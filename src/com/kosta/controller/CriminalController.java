@@ -21,7 +21,16 @@ public interface CriminalController {
 				FailView.errorMessage(e.getMessage());
 			}
 	}
-			 
+	
+	static void CallMidCrime(String name) {
+				try {
+					List<CriminalDTO> list = criminalservice.CallMidCrime(name);
+					SuccessView.successlist(list);
+				}catch(SQLException e) {
+					FailView.errorMessage(e.getMessage());
+				}
+			}
+	
 	static void SearchOccur(int number) {
 		try {
     		int occur =criminalservice.SearchOccur(number);
