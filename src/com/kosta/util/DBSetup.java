@@ -42,38 +42,25 @@ public class DBSetup {
         	JsonArray parse_item = (JsonArray) parse_response.get("row");
         	JsonObject weather = (JsonObject) parse_item.get(0);
         	
+        	System.out.println(weather);
         	
-        	Connection con = DbUtil.getConnection();  
-        	
-//        	String[] strArray = {"합계","강력범,","절도범","폭력범","지능범","풍속범","기타형사범","특별법범"};
-//        	List<a> list = new ArrayList<a>();
+        	String sql = "insert into SEOULOCCURRENCE values (?,?,?,?)";
+       		Connection con = DbUtil.getConnection();
+        	PreparedStatement ps = con.prepareStatement(sql);
         	
         	for(int i =0; i<8 ;i++) {
-        		
-        		String temp1 = weather.get("BALSAENG_"+i).toString();
-        		String temp2 = weather.get("GEOMGEO_"+i).toString();
+        		String temp1 = weather.get("BALSAENG_"+(i+1)).toString();
+        		String temp2 = weather.get("GEOMGEO_"+(i+1)).toString();
 
-        		String sql = "insert into IDNAME values (?,?,?)";
-            	PreparedStatement ps = con.prepareStatement(sql);
-            	
-            	if(i==0) {
-            		ps.setString(1,"99");
-            	} else {
-                	ps.setString(1,Integer.toString(i-1));
-            	}
+            	if(i==0) ps.setString(1,"99");
+            	 else ps.setString(1,Integer.toString(i-1));
             	
             	ps.setInt(2, Integer.parseInt(temp1.replace("\"","")) );
             	ps.setInt(3, Integer.parseInt(temp2.replace("\"","")) );
-            	
-            	ps.executeUpdate();
-        		
-//        		list.add(new a(i,temp3,temp4));  
+            	ps.setString(4, "");
+            	ps.executeUpdate();    	
         	}
-        	
-//        	for(a aa : list) {
-//        		System.out.println(aa);
-//        	}
-        	
+
         }catch(Exception e){
             System.out.println(e.getMessage()); 
         }
