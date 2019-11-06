@@ -17,16 +17,29 @@ public class MenuView {
 	    * */
 	    public void menuChoice() {
 	         while(true) {
-	        	 
-	        	 if (mode==0) System.out.println("**********************************");
-	        	 else System.out.println("***********관리자모드ON************");
+	             System.out.println();
+	             System.out.print("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n");
+	             System.out.print("▒									▒\n");
+	             System.out.print("▒									▒\n");
+	             System.out.print("▒									▒\n");
+	             System.out.print("▒			  -Welcome to Program-				▒\n");
+	        	System.out.print("▒			□■□Criminal Mind□■□			▒\n");
+	        	 if (mode==0)System.out.print("▒									▒\n");
+	        	 else System.out.print("▒		   	      -관리자 모드-				▒\n");
+	        	System.out.print("▒									▒\n");
+	        	System.out.print("▒			 -------→Menu←---------			▒\n");
+	        	System.out.print("▒			│   전체 검색 : 1	│		        ▒\n");
+	        	System.out.print("▒			│   세부 검색 : 2	│		        ▒\n");
+	        	System.out.print("▒			│   관리자 모드 : 3	│		        ▒\n");
+	        	System.out.print("▒			│   종료 : 9		│	       	 	▒\n");
+	        	System.out.print("▒			 ------------------------			▒\n");
+	        	System.out.print("▒									▒\n");
+	        	System.out.print("▒									▒\n");
+	        	System.out.print("▒									▒\n");
+	        	System.out.print("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n");
+	        	System.out.print("\n");
 
-	        	 System.out.print("[1.전체검색 ");
-	        	 System.out.print("2.세부검색 ");
-	        	 System.out.print("3.관리자모드 ");
-	        	 System.out.print("9.종료 ]");
-	             System.out.println("\n**********************************");
-	             System.out.println("메뉴를 선택해주세요.");
+	             
 	             
 	              try {
 		              int menu = Integer.parseInt(sc.nextLine());
@@ -104,8 +117,16 @@ public class MenuView {
 	    	System.out.println("2. 2016 범죄 발생일로 부터 검거 기간");
 	    	try {
 	    		int nums = sc.nextInt();
-		    	if(nums ==1 ) controller.SelectAll();
-		    	else if(nums ==2) controller.SelectAll2();
+		    	if(nums ==1 ) {
+		    		System.out.println("		=========> 범죄 발생 횟수 출력 <============");
+		    		System.out.println();
+		    		controller.SelectAll();
+		    	}
+		    	else if(nums ==2) {
+		    		System.out.println("		=========> 발생일로 부터 검거 기간 출력 <============");
+		    		System.out.println();
+		    		controller.SelectAll2();
+		    	}
 		    	else System.out.println("잘못 입력 하셨습니다");
 		
 	    	} catch (Exception e) {
@@ -118,6 +139,28 @@ public class MenuView {
 	     * 2. 세부검색
 	     */
 	    public void SearchMode() { 
+	    	
+	    	System.out.println("                                   @@@@@");
+	    	System.out.println("                                @@@@@@");
+	    	System.out.println("                              @@@@@@");
+	    	System.out.println("                            @@@@@@");
+	    	System.out.println("                          @@@@@@");
+	    	System.out.println("                        @@@@@@  ");   
+	    	System.out.println("                      @@@@@@@");      
+	    	System.out.println("                    @@@@@@@   ");    
+	    	System.out.println("                  @@@@@@@@        ");
+	    	System.out.println(" @@@@           @@@@@@@@          ");
+	    	System.out.println("  @@@@@@@@     @@@@@@@@          ");
+	    	System.out.println("    @@@@@@@@@@@@@@@@@@           ");
+	    	System.out.println("      @@@@@@@@@@@@@@@            ");
+	    	System.out.println("        @@@@@@@@@@@@            ");
+	    	System.out.println("         @@@@@@@@@@            ");
+	    	System.out.println("          @@@@@@@@             ");
+	    	System.out.println("            @@@@@              ");
+	    	System.out.println("             @@@               ");
+	    	System.out.println("              @");
+	    	
+	    	
 	    	controller.callSuperCrime();
 	    	System.out.println("다음 목록 중 한가지를 선택해주세요");
 	    	try {
@@ -131,17 +174,23 @@ public class MenuView {
 	    		System.out.println("잘못된 값을 입력하셨습니다.");
 	    		return;
 	    	}
-	    	
-	    	System.out.println("1번을 누르면 범죄별 세부항목을 확인할 수 있습니다.");
-	    	System.out.println("2번을 누르면 2016 서울 범죄 발생 횟수를 확인할 수 있습니다.");
+	    	System.out.println("===============================================================================================================================");
+	    	System.out.println("다음 중 한가지를 선택해주세요");
+	    	System.out.println("1번을 입력하시면 범죄별 세부항목을 확인할 수 있습니다.");
+	    	System.out.println("2번을 입력하시면 2016 서울 범죄 발생 횟수를 확인할 수 있습니다.");
+
 	    	int nums = sc.nextInt();
+	    	
 	    	
 	    	switch(nums) {
 	    	case 1:
+	    		System.out.println();
+	    		System.out.println("===> 세부항목 출력 ");
 	    		controller.CallMidCrime(name);
-	    		System.out.println("다음 목록 중 한가지를 선택해주세요");
-	    		System.out.println("범죄 발생일로 부터 검거 기간을 확인할 수 있습니다.");
 	    		
+	    		System.out.println("===============================================================================================================================");
+	    		System.out.println("위 목록 중 한가지를 선택해주세요");
+	    		System.out.println("범죄 발생일로 부터 검거 기간을 확인할 수 있습니다.");
 	    		sc.nextLine();
 	    		//버퍼처리
 	    		int num = sc.nextInt();
@@ -192,6 +241,7 @@ public class MenuView {
 	    			}
 	    			}
 	    		}
+	    		break;
 	    	default : 
 				System.out.println("잘못 입력하셨습니다.");
 				break;
@@ -200,49 +250,6 @@ public class MenuView {
 	    	}catch( Exception e) {
 	    		System.out.println("1번과 2번 이외의 값을 입력 하셨습니다.");
 	    	}
-//	    	
-//	    	finally {
-//	    		System.out.println("다른 범죄도 확인하시겠습니까 yes or no");
-//	    		sc.nextLine();
-//	    		String choice = sc.nextLine();
-//	    		if(choice.equals("yes")) { 
-//	    			System.out.println("원하는 문자를 입력해주세요");
-//	    			String name = sc.nextLine();
-//	    			CriminalController.CallMidCrime(name);
-//	    		}else 
-//	    			System.out.println("종료합니다.");
-//    			System.exit(0);	
-//	    	}
 	    }
 }
 		     
-		     //////////////////
-	
-//	     
-//	    /**
-//	     * 수정
-//	     * */
-//	     public static void managerUpdate() {
-//	    	 System.out.println("수정 할 범죄코드을 입력해주세요");
-//	    	 String id = sc.nextLine();
-//	    	 
-//	    	 System.out.println("수정 내용은?");
-//	    	 String comment = sc.nextLine();
-//	    	
-//	    	 CriminalDTO dto =  new CriminalDTO(id, null, null, comment);
-//	    	 
-//	    	 CriminalController.managerUpdate(dto);
-//	     }
-//	    
-//	    /**
-//	     * 삭제
-//	     * */
-//	     public static void managerDelete() {
-//	    	 System.out.println("삭제 할 범죄코드를 입력해주세요.");
-//	    	 String id = sc.nextLine();
-//	    	 
-//	    	 CriminalController.managerDelete(id);
-//	     }
-//	}
-//
-//		

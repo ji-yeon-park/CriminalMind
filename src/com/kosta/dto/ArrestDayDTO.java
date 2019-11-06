@@ -74,21 +74,10 @@ public class ArrestDayDTO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ArrestDayDTO [supercrime=");
-		builder.append(supercrime);
-		builder.append(", midcrime=");
-		builder.append(midcrime);
-		builder.append(", oneD=");
-		builder.append(oneD);
-		builder.append(", oneM=");
-		builder.append(oneM);
-		builder.append(", oneY=");
-		builder.append(oneY);
-		builder.append(", ys=");
-		builder.append(ys);
-		builder.append(", comments=");
-		builder.append(comments);
-		builder.append("]");
+		System.out.println("===============================================================================================================================");
+		System.out.println("범죄 대분류\t|범죄 중분류      \t|1일이내\t|1개월이내\t|1년이내\t|1년초과");
+		System.out.println("===============================================================================================================================");
+		System.out.println(this.getSupercrime() + "\t|" +this.getMidcrime() +"   \t\t|"+ this.getOneD() +"\t\t|"+ this.getOneM() +"\t\t|"+ this.getOneY() +"\t\t|"+ this.getYs());
 		return builder.toString();
 	}
 

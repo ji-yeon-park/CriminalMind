@@ -15,8 +15,15 @@ public class SuccessView {
 
 	public static void successlistAll(List<CrimeInfoDTO> list) {
 		int i = 1;
+		System.out.println("===============================================================================================================================");
+		System.out.println("범죄 대분류\t|발생\t\t|검거");
+		System.out.println("===============================================================================================================================");
+		
 		for(CrimeInfoDTO crime : list) {
-			System.out.println("\t" + i+"."+crime.getSupercrime() + "|" + crime.getOccur() +" | "+ crime.getArrest());
+			if(i==8) System.out.println(i+"."+crime.getSupercrime() + "\t\t|" + crime.getOccur() +"\t\t| "+ crime.getArrest());
+			//임시로..
+			else System.out.println(i+"."+crime.getSupercrime() + "\t|" + crime.getOccur() +"\t\t| "+ crime.getArrest());
+
 			i++;
 		}
 	}
@@ -24,8 +31,13 @@ public class SuccessView {
 
 	public static void successlistAll2(List<ArrestDayDTO> list) {
 		int i = 1;
+		System.out.println("===============================================================================================================================");
+		System.out.println("범죄 대분류\t|범죄 중분류      \t|1일이내\t|1개월이내\t|1년이내\t|1년초과");
+		System.out.println("===============================================================================================================================");
+		
 		for(ArrestDayDTO crime : list) {
-			System.out.println("\t" + i+"."+crime.getSupercrime() +" | "+crime.getMidcrime() +" | "+ crime.getOneD() +" | "+ crime.getOneM() +" | "+ crime.getOneY() +" | "+ crime.getYs());
+			if(i==7||i==23||i==29) System.out.println(i+"."+crime.getSupercrime() + "\t|" +crime.getMidcrime() +"   \t|"+ crime.getOneD() +"\t\t|"+ crime.getOneM() +"\t\t|"+ crime.getOneY() +"\t\t|"+ crime.getYs());
+			else System.out.println(i+"."+crime.getSupercrime() + "\t|" +crime.getMidcrime() +"   \t\t|"+ crime.getOneD() +"\t\t|"+ crime.getOneM() +"\t\t|"+ crime.getOneY() +"\t\t|"+ crime.getYs());
 			i++;
 		}
 	}

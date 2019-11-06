@@ -47,17 +47,12 @@ public class CrimeInfoDTO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("CriminalDTO [");
-		builder.append("supercrime=");
-		builder.append(supercrime);
-		builder.append(", occur_no=");
-		builder.append(occur_no);
-		builder.append(", arrest_no=");
-		builder.append(arrest_no);
-		builder.append(", comment=");
-		builder.append(comment);
-		builder.append("]");
-		builder.append("\n");
+		System.out.println("===============================================================================================================================");
+		System.out.println("범죄 대분류\t|발생\t\t|검거\t\t|COMMENTS");
+		System.out.println("===============================================================================================================================");
+		
+		System.out.println(supercrime + "\t|" + occur_no +"\t\t|"+ this.getArrest() + "\t\t|" + this.getComment() );
+
 		return builder.toString();
 		
 	}
